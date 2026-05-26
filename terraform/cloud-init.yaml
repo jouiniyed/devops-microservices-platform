@@ -1,0 +1,30 @@
+#cloud-config
+
+package_update: true 
+
+packages:
+  - curl
+  - nginx
+  - certbot
+  - python3-certbot-nginx
+  - git
+
+runcmd:
+  # Installer K3s (Kubernetes léger)
+  - curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+
+  # Rendre kubectl accessible globalement 
+  - mkdir -p /root/.kube
+  - cp /etc/rancher/k3s/k3s.yaml /root/.kube/config
+  - chmod 600 /root/.kube/config
+
+  # Installer Helm
+  - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+  # Attendre que K3s soit prêt
+  - sleep 30
+  - kubectl wait --for=condition=Ready node --all --timeout=120s
+
+  # Configurer Nginx
+  - systemctl enable nginx
+  - systemctl start nginx
