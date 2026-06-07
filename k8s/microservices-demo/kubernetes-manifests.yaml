@@ -730,7 +730,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: us-central1-docker.pkg.dev/google-samples/microservices-demo/frontend:v0.10.5
+          image: ghcr.io/jouiniyed/devops-microservices-platform/frontend:sha-3bbf13eede17a19cb76a5518c3a8698cb1f86fb0
           ports:
           - containerPort: 8080
           readinessProbe:
