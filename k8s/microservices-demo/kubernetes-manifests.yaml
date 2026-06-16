@@ -730,7 +730,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: ghcr.io/jouiniyed/devops-microservices-platform/frontend:sha-50e77fdd4125462292d5af06870a0e6a714d2bb2
+          image: ghcr.io/jouiniyed/devops-microservices-platform/frontend:sha-cd2058c7ef896926ef191e00618969390b3dd908
           ports:
           - containerPort: 8080
           readinessProbe:
