@@ -30,7 +30,7 @@ jobs:
         with: 
           scan-type: config
           scan-ref: terraform/
-          exity-code: 0
+          exit-code: 0
           severity: CRITICAL,HIGH
           format: table 
   
